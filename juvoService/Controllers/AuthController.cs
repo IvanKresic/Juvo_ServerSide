@@ -10,23 +10,25 @@ using System.Net;
 using System;
 using juvoService.Models;
 using System.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace juvoService.Controllers
 {
     [MobileAppController]
     public class AuthController : ApiController
     {
-        private IMobileServiceSyncTable<Users> usersTable;
-        juvoContext db = new juvoContext();
+        //juvoContext db = new juvoContext();
         private int userID;
+        private bool auth = false;
 
-        public HttpResponseMessage Post(string email, string password)
+        public async Task<HttpResponseMessage> Post(string email, string password)
         {
 
-            IsPasswordValid(email, password);
+            await IsPasswordValid(email, password);
             // return error if password is not correct
-            
-            if (!this.IsPasswordValid(email, password))
+
+            if (!auth)
             {
                 return this.Request.CreateUnauthorizedResponse();
             }
@@ -41,21 +43,24 @@ namespace juvoService.Controllers
             });
         }
 
-        private bool IsPasswordValid(string email, string pass)
+
+        private async Task IsPasswordValid(string email, string pass)
         {
             // this is where we would do checks agains a database
-            var temp = db.Users.SqlQuery("SELECT * FROM dbo.Users WHERE Email = '" + email + "' AND Password = '" + pass + "'");
-            temp.ToListAsync();
-            if(temp != null)
+            using (var context = new juvoContext())
             {
-                foreach(Users u in temp)
+                var temp = await context.Users.SqlQuery("SELECT * FROM dbo.Users WHERE Email = '" + email + "' AND Password = '" + pass + "'").ToListAsync();
+                if (temp != null)
                 {
-                    userID = u.UsersID;
-                    return true;
-                }                
+                    foreach (Users u in temp)
+                    {
+                        userID = u.UsersID;
+                        auth = true;
+                    }
+                }
             }
-            
-            return false;
+
+            auth = true;
         }
 
 
@@ -95,6 +100,7 @@ namespace juvoService.Controllers
                 return "https://" + settings.HostName + "/";
             }
         }
+
 
         private string GetSigningKey()
         {
