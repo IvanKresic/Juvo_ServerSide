@@ -58,9 +58,14 @@ namespace juvoService.Controllers
                         auth = true;
                     }
                 }
+                else
+                {
+                    auth = false;
+                }
+                
             }
 
-            auth = true;
+            
         }
 
 
