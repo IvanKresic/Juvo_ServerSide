@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using juvoService.Migrations;
 using System.Web.Http;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
-using juvoService.DataObjects;
 using juvoService.Models;
 using Owin;
 
@@ -30,8 +28,8 @@ namespace juvoService
             // Use Entity Framework Code First to create database tables based on your DbContext
             //Database.SetInitializer(new juvoInitializer());
 
-            var migrator = new DbMigrator(new Migrations.Configuration());
-            migrator.Update();
+            //var migrator = new DbMigrator(new Migrations.Configuration());
+            //migrator.Update();
 
             // To prevent Entity Framework from modifying your database schema, use a null database initializer
             // Database.SetInitializer<juvoContext>(null);
@@ -52,25 +50,6 @@ namespace juvoService
             }
             app.UseWebApi(config);
         }
-    }
-
-    public class juvoInitializer : CreateDatabaseIfNotExists<juvoContext>
-    {
-        protected override void Seed(juvoContext context)
-        {
-            List<TodoItem> todoItems = new List<TodoItem>
-            {
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "First item", Complete = false },
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "Second item", Complete = false },
-            };
-
-            foreach (TodoItem todoItem in todoItems)
-            {
-                context.Set<TodoItem>().Add(todoItem);
-            }
-
-            base.Seed(context);
-        }
-    }
+    }    
 }
 

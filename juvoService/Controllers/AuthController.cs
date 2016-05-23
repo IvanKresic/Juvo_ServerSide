@@ -2,7 +2,6 @@
 using Microsoft.Azure.Mobile.Server.Config;
 using Microsoft.Azure.Mobile.Server.Login;
 using System.IdentityModel.Tokens;
-using juvoService.DataObjects;
 using System.Security.Claims;
 using System.Net.Http;
 using System.Web.Http;
@@ -47,14 +46,14 @@ namespace juvoService.Controllers
         private async Task IsPasswordValid(string email, string pass)
         {
             // this is where we would do checks agains a database
-            using (var context = new juvoContext())
+            using (var context = new TEST())
             {
                 var temp = await context.Users.SqlQuery("SELECT * FROM dbo.Users WHERE Email = '" + email + "' AND Password = '" + pass + "'").ToListAsync();
                 if (temp != null)
                 {
                     foreach (Users u in temp)
                     {
-                        userID = u.UsersID;
+                        userID = u.ID;
                         auth = true;
                     }
                 }
