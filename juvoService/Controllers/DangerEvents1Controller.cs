@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using juvoService.Models;
 using Microsoft.Azure.Mobile.Server.Config;
 using System.Diagnostics;
 using Newtonsoft.Json;
@@ -20,7 +19,7 @@ namespace juvoService.Controllers
     public class DangerEvents1Controller : ApiController
     {
         //DbContext db = new DbContext();
-        private TEST db = new TEST();
+        private JuvoHomeFriendEntities db = new JuvoHomeFriendEntities();
         //private juvoContext db = new juvoContext();
 
         // GET: api/DangerEvents1

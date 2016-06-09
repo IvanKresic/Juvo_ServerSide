@@ -7,28 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace juvoService.Models
+namespace juvoService
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-
-    public partial class Devices
+    
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Devices()
+        public Users()
         {
-            this.DangerEvents = new HashSet<DangerEvents>();
+            this.Devices = new HashSet<Devices>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public int UserId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string TimeZone { get; set; }
+        public Nullable<bool> Activated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DangerEvents> DangerEvents { get; set; }
-
-        [JsonIgnore]
-        public virtual Users Users { get; set; }
+        public virtual ICollection<Devices> Devices { get; set; }
     }
 }

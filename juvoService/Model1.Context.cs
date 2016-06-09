@@ -7,15 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace juvoService.Models
+namespace juvoService
 {
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TEST : DbContext
+    public partial class JuvoHomeFriendEntities : DbContext
     {
-        public TEST()
-            : base("name=TEST")
+        public JuvoHomeFriendEntities()
+            : base("name=JuvoHomeFriendEntities")
         {
         }
     

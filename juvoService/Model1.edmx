@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="juvoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="JuvoHomeFriendModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DangerEvents">
           <Key>
             <PropertyRef Name="ID" />
@@ -32,7 +32,7 @@
           <Property Name="TimeZone" Type="text" />
           <Property Name="Activated" Type="bit" />
         </EntityType>
-        <Association Name="FK__DangerEve__Devic__681373AD">
+        <Association Name="FK__DangerEve__Devic__3B75D760">
           <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
           <End Role="DangerEvents" Type="Self.DangerEvents" Multiplicity="*" />
           <ReferentialConstraint>
@@ -44,7 +44,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Devices__UserId__65370702">
+        <Association Name="FK__Devices__UserId__38996AB5">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
           <ReferentialConstraint>
@@ -56,15 +56,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="juvoModelStoreContainer">
+        <EntityContainer Name="JuvoHomeFriendModelStoreContainer">
           <EntitySet Name="DangerEvents" EntityType="Self.DangerEvents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__DangerEve__Devic__681373AD" Association="Self.FK__DangerEve__Devic__681373AD">
+          <AssociationSet Name="FK__DangerEve__Devic__3B75D760" Association="Self.FK__DangerEve__Devic__3B75D760">
             <End Role="Devices" EntitySet="Devices" />
             <End Role="DangerEvents" EntitySet="DangerEvents" />
           </AssociationSet>
-          <AssociationSet Name="FK__Devices__UserId__65370702" Association="Self.FK__Devices__UserId__65370702">
+          <AssociationSet Name="FK__Devices__UserId__38996AB5" Association="Self.FK__Devices__UserId__38996AB5">
             <End Role="Users" EntitySet="Users" />
             <End Role="Devices" EntitySet="Devices" />
           </AssociationSet>
@@ -73,7 +73,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="juvoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="JuvoHomeFriendModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="DangerEvents">
           <Key>
             <PropertyRef Name="ID" />
@@ -81,7 +81,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DeviceId" Type="Int32" Nullable="false" />
           <Property Name="HappenedAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Devices" Relationship="Self.FK__DangerEve__Devic__681373AD" FromRole="DangerEvents" ToRole="Devices" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__DangerEve__Devic__3B75D760" FromRole="DangerEvents" ToRole="Devices" />
         </EntityType>
         <EntityType Name="Devices">
           <Key>
@@ -90,8 +90,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DangerEvents" Relationship="Self.FK__DangerEve__Devic__681373AD" FromRole="Devices" ToRole="DangerEvents" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Devices__UserId__65370702" FromRole="Devices" ToRole="Users" />
+          <NavigationProperty Name="DangerEvents" Relationship="Self.FK__DangerEve__Devic__3B75D760" FromRole="Devices" ToRole="DangerEvents" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Devices__UserId__38996AB5" FromRole="Devices" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -103,9 +103,9 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TimeZone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Activated" Type="Boolean" />
-          <NavigationProperty Name="Devices" Relationship="Self.FK__Devices__UserId__65370702" FromRole="Users" ToRole="Devices" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__Devices__UserId__38996AB5" FromRole="Users" ToRole="Devices" />
         </EntityType>
-        <Association Name="FK__DangerEve__Devic__681373AD">
+        <Association Name="FK__DangerEve__Devic__3B75D760">
           <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
           <End Role="DangerEvents" Type="Self.DangerEvents" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,7 +117,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Devices__UserId__65370702">
+        <Association Name="FK__Devices__UserId__38996AB5">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
           <ReferentialConstraint>
@@ -129,15 +129,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TEST" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="JuvoHomeFriendEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DangerEvents" EntityType="Self.DangerEvents" />
           <EntitySet Name="Devices" EntityType="Self.Devices" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__DangerEve__Devic__681373AD" Association="Self.FK__DangerEve__Devic__681373AD">
+          <AssociationSet Name="FK__DangerEve__Devic__3B75D760" Association="Self.FK__DangerEve__Devic__3B75D760">
             <End Role="Devices" EntitySet="Devices" />
             <End Role="DangerEvents" EntitySet="DangerEvents" />
           </AssociationSet>
-          <AssociationSet Name="FK__Devices__UserId__65370702" Association="Self.FK__Devices__UserId__65370702">
+          <AssociationSet Name="FK__Devices__UserId__38996AB5" Association="Self.FK__Devices__UserId__38996AB5">
             <End Role="Users" EntitySet="Users" />
             <End Role="Devices" EntitySet="Devices" />
           </AssociationSet>
@@ -147,9 +147,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="juvoModelStoreContainer" CdmEntityContainer="TEST">
+        <EntityContainerMapping StorageEntityContainer="JuvoHomeFriendModelStoreContainer" CdmEntityContainer="JuvoHomeFriendEntities">
           <EntitySetMapping Name="DangerEvents">
-            <EntityTypeMapping TypeName="juvoModel.DangerEvents">
+            <EntityTypeMapping TypeName="JuvoHomeFriendModel.DangerEvents">
               <MappingFragment StoreEntitySet="DangerEvents">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
@@ -158,7 +158,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Devices">
-            <EntityTypeMapping TypeName="juvoModel.Devices">
+            <EntityTypeMapping TypeName="JuvoHomeFriendModel.Devices">
               <MappingFragment StoreEntitySet="Devices">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -167,7 +167,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="juvoModel.Users">
+            <EntityTypeMapping TypeName="JuvoHomeFriendModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

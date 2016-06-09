@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Net;
 using System;
-using juvoService.Models;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,7 +45,7 @@ namespace juvoService.Controllers
         private async Task IsPasswordValid(string email, string pass)
         {
             // this is where we would do checks agains a database
-            using (var context = new TEST())
+            using (var context = new JuvoHomeFriendEntities())
             {
                 var temp = await context.Users.SqlQuery("SELECT * FROM dbo.Users WHERE Email = '" + email + "' AND Password = '" + pass + "'").ToListAsync();
                 if (temp != null)

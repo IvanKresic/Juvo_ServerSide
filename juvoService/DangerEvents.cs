@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace juvoService.Models
+namespace juvoService
 {
     using Newtonsoft.Json;
     using System;
@@ -18,7 +18,7 @@ namespace juvoService.Models
         public int ID { get; set; }
         public int DeviceId { get; set; }
         public string HappenedAt { get; set; }
-    
+
         [JsonIgnore]
         public virtual Devices Devices { get; set; }
     }

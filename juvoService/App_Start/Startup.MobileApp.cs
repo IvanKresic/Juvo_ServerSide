@@ -7,7 +7,6 @@ using System.Web.Http;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
-using juvoService.Models;
 using Owin;
 
 namespace juvoService
